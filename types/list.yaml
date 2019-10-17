@@ -1,0 +1,20 @@
+type: object
+description: Shopping List
+properties:
+  listId:
+    type: integer
+  listName:
+    type: string
+  store:
+    type: string
+  estimatedCost:
+    type: number
+  listItems:
+    type: array
+    items:
+      type: object
+      properties:
+        itemName:
+          type: string
+        quantity:
+          type: integer

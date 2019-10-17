@@ -1,0 +1,128 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Grocery List API
+  description: List API designed to facilitate shopping lists
+servers:
+- url: https://www.groceries.io/api/v1
+components:
+  securitySchemes:
+    BasicAuth:
+      type: http
+      scheme: basic
+  schemas:
+    listArray:
+      type: array
+      items:
+        "$ref": "#/components/schemas/list"
+    listNoIdArray:
+      type: array
+      items:
+        "$ref": "#/components/schemas/listNoId"
+    list:
+      "$ref": "./types/list.yaml"
+    listNoId:
+      "$ref": "./types/list-no-id.yaml"
+  parameters:
+    PageLimit:
+      name: limit
+      in: query
+      description: Limits the number of items per page
+      schema:
+        type: integer
+    PageOffset:
+      name: offset
+      in: query
+      description: Specifies the page number to display
+      schema:
+        type: integer
+  responses:
+    200List:
+      description: ''
+    400Error:
+      description: Bad Request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+    500Error:
+      description: Internal Sever Error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+security:
+- BasicAuth: []
+paths:
+  "/lists":
+    get:
+      description: Returns all current shopping lists
+      parameters:
+      - "$ref": "#/components/parameters/PageLimit"
+      - "$ref": "#/components/parameters/PageOffset"
+      - name: store
+        in: query
+        description: Filters the returned list by store name
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/listArray"
+        '400':
+          "$ref": "#/components/responses/400Error"
+        '500':
+          "$ref": "#/components/responses/500Error"
+    post:
+      description: Adds a list to the lists collection
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/listNoIdArray"
+      responses:
+        '204':
+          description: Lists added to List Collection
+        '400':
+          "$ref": "#/components/responses/400Error"
+        '500':
+          "$ref": "#/components/responses/500Error"
+  "/lists/{listID}":
+    get:
+      description: Get a list by list id
+      parameters:
+      - name: listId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully returned a list
+          content:
+            application/json:
+              schema:
+                "$ref": "#/components/schemas/list"
+    put:
+      description: Updates or inserts a list
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/listNoId"
+      responses:
+        '204':
+          description: List Updated or Inserted
+    delete:
+      responses:
+        '204':
+          description: List deleted
