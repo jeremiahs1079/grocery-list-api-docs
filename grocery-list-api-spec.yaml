@@ -11,54 +11,15 @@ components:
       type: http
       scheme: basic
   schemas:
-    listArray:
-      type: array
-      items:
-        "$ref": "#/components/schemas/list"
-    listNoIdArray:
-      type: array
-      items:
-        "$ref": "#/components/schemas/listNoId"
-    list:
-      "$ref": "./types/list.yaml"
-    listNoId:
-      "$ref": "./types/list-no-id.yaml"
+    $ref: components/schemas.yaml
   parameters:
-    PageLimit:
-      name: limit
-      in: query
-      description: Limits the number of items per page
-      schema:
-        type: integer
-    PageOffset:
-      name: offset
-      in: query
-      description: Specifies the page number to display
-      schema:
-        type: integer
+    $ref: components/parameters.yaml
   responses:
-    200List:
-      description: ''
-    400Error:
-      description: Bad Request
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-    500Error:
-      description: Internal Sever Error
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
+    $ref: components/responses.yaml
+
 security:
 - BasicAuth: []
+
 paths:
   "/lists":
     get:
@@ -126,3 +87,24 @@ paths:
       responses:
         '204':
           description: List deleted
+  "/items":
+    get:
+      description: Get list of items form the server
+      responses:
+        '200':
+          description: Successfully returned a collection of items
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/itemArray"
+        
+    post:
+      description: Adds a list of items
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/itemNoIdArray"
+      responses:
+        '204':
+          description: Items created

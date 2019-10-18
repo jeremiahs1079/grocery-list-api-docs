@@ -1,0 +1,12 @@
+type: object
+description: Shopping List Item
+properties:
+  itemId:
+    type: integer
+  itemName:
+    type: string
+  itemDescription:
+    type: string
+  itemPrice:
+    type: number
+    

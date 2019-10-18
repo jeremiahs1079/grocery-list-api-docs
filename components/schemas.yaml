@@ -1,0 +1,30 @@
+listArray:
+  type: array
+  items:
+    $ref: ../types/list.yaml
+listNoIdArray:
+  type: array
+  items:
+    $ref: ../types/list-no-id.yaml
+list:
+  $ref: ../types/list.yaml
+listNoId:
+  $ref: ../types/list-no-id.yaml
+item:
+  $ref: ../types/item.yaml
+itemNoId:
+  $ref: ../types/item-no-id.yaml
+itemArray:
+  type: array
+  items:
+    $ref: ../types/item.yaml
+itemNoIdArray:
+  type: array
+  items:
+    $ref: ../types/item-no-id.yaml
+store:
+  $ref: ../types/store.yaml
+storeArray:
+  type: array
+  items:
+    $ref: ../types/store.yaml

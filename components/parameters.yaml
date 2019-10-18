@@ -1,0 +1,12 @@
+PageLimit:
+  name: limit
+  in: query
+  description: Limits the number of items per page
+  schema:
+    type: integer
+PageOffset:
+  name: offset
+  in: query
+  description: Specifies the page number to display
+  schema:
+    type: integer

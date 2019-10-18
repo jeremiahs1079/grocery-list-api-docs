@@ -1,0 +1,10 @@
+type: object
+description: Store to get items
+properties:
+  storeId:
+    type: integer
+  storeName:
+    type: string
+  storeAddress:
+    $ref: ./address.yaml
+    

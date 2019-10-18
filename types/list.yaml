@@ -12,9 +12,4 @@ properties:
   listItems:
     type: array
     items:
-      type: object
-      properties:
-        itemName:
-          type: string
-        quantity:
-          type: integer
+      $ref: ./item.yaml

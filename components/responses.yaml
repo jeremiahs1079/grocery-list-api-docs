@@ -1,0 +1,20 @@
+200List:
+  description: ''
+400Error:
+  description: Bad Request
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          message:
+            type: string
+500Error:
+  description: Internal Sever Error
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          message:
+            type: string

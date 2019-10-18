@@ -1,0 +1,15 @@
+tpye: object
+description: Address
+properties:
+  addressId:
+    type: integer
+  addressLineOne:
+    type: string
+  addressLineTwo:
+    type: string
+  city:
+    type: string
+  state:
+    type: string
+  zip:
+    type: string
