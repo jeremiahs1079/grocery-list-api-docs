@@ -27,6 +27,7 @@ paths:
       parameters:
       - "$ref": "#/components/parameters/PageLimit"
       - "$ref": "#/components/parameters/PageOffset"
+      - "$ref": "#/components/parameters/UserID"
       - name: store
         in: query
         description: Filters the returned list by store name

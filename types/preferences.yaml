@@ -1,0 +1,15 @@
+type: object
+description: Preferences user parameters
+properties:
+  time_spent_preference:
+    type: long
+  presentage_savings_preferences:
+    type: float
+  amount_limit_preference:
+    type: float
+  distance_preference:
+    type: number
+  stores_preference:
+    type: array
+    items: 
+      $ref: ./store.yaml

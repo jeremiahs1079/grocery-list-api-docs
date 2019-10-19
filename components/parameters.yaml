@@ -10,3 +10,8 @@ PageOffset:
   description: Specifies the page number to display
   schema:
     type: integer
+UserID:
+  name: user_id
+  in: query
+  description: User ID info for list request
+  schema: integer

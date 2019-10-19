@@ -1,0 +1,21 @@
+type: object
+description: Profile inctance
+properties:
+  user_id: 
+    type: integer
+  first_name:
+    type: string
+  last_name:
+    type: string
+  middle_initial:
+    type: string
+  dob:
+    type: date
+  sex:
+    type: string
+  address:
+    $ref: ./address.yaml
+  phone_number: 
+    type: integer
+  preferences:
+    $ref: ./preferences.yaml
